@@ -1,5 +1,3 @@
-package com.theironyard;
-
 /**
  * The Character class represents a character in a video game. Characters have
  * names, character types (such as wizard, orc, thief, spy, etc), health, and

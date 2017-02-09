@@ -1,10 +1,10 @@
-package com.theironyard;
-
 import net.doughughes.testifier.exception.*;
 import net.doughughes.testifier.test.TestifierTest;
 import net.doughughes.testifier.util.Invoker;
 import org.junit.Test;
 
+import java.lang.*;
+import java.lang.Character;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 
@@ -22,7 +22,7 @@ public class CharacterTest extends TestifierTest {
         /* Act */
         Field name = null;
         try {
-            name = Character.class.getDeclaredField("name");
+            name = java.lang.Character.class.getDeclaredField("name");
         } catch (NoSuchFieldException e) {
             fail("Character does not have a 'name' property.");
         }
@@ -161,7 +161,7 @@ public class CharacterTest extends TestifierTest {
                     wizardHealth, equalTo(100-2.25));
             assertThat("The attack() method should subtract the attacking character's power from the target character's health.",
                     thiefHealth, equalTo(50-5.75));
-        } catch (CannotFindMethodException | CannotAccessMethodException | CannotFindFieldException | CannotAccessFieldException e) {
+        } catch (CannotInvokeMethodException | CannotFindMethodException | CannotAccessMethodException | CannotFindFieldException | CannotAccessFieldException e) {
             fail(e.getMessage());
         }
     }

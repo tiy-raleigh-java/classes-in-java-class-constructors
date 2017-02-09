@@ -1,5 +1,3 @@
-package com.theironyard;
-
 /**
  * In this exercise you will complete a Character class and use it in the main()
  * method below.

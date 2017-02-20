@@ -23,7 +23,7 @@ public class MainTest extends TestifierTest {
 
         /* assert */
         assertThat("The main() method should instantiate a new Character of with a type of 'wizard' and set it into a variable named wizard.",
-                source, RegexMatcher.matches("^.*?ExpressionStmt VariableDeclarationExpr ReferenceType ClassOrInterfaceType\\[Character\\] VariableDeclarator VariableDeclaratorId\\[wizard\\] ObjectCreationExpr ClassOrInterfaceType\\[Character\\] StringLiteralExpr\\[.*?\\] StringLiteralExpr\\[wizard\\] IntegerLiteralExpr\\[.*?\\] DoubleLiteralExpr\\[.*?\\] \\/ExpressionStmt.*?$"));
+                source, RegexMatcher.matches("^.*?ExpressionStmt VariableDeclarationExpr ReferenceType ClassOrInterfaceType\\[Character\\] VariableDeclarator VariableDeclaratorId\\[wizard\\] ObjectCreationExpr ClassOrInterfaceType\\[Character\\] StringLiteralExpr\\[.*?\\] StringLiteralExpr\\[wizard\\].*?\\/ExpressionStmt.*?$"));
     }
 
     @Test
@@ -39,12 +39,12 @@ public class MainTest extends TestifierTest {
         }
 
         /* assert */
-        assertThat("The main() method should instantiate a new Character of with a type of 'orc' and set it into a variable named orc.",
-                source, RegexMatcher.matches("^.*?ExpressionStmt VariableDeclarationExpr ReferenceType ClassOrInterfaceType\\[Character\\] VariableDeclarator VariableDeclaratorId\\[orc\\] ObjectCreationExpr ClassOrInterfaceType\\[Character\\] StringLiteralExpr\\[.*?\\] StringLiteralExpr\\[orc\\] IntegerLiteralExpr\\[.*?\\] DoubleLiteralExpr\\[.*?\\] \\/ExpressionStmt.*?$"));
+        assertThat("^.*?ExpressionStmt VariableDeclarationExpr ReferenceType ClassOrInterfaceType\\[Character\\] VariableDeclarator VariableDeclaratorId\\[orc\\] ObjectCreationExpr ClassOrInterfaceType\\[Character\\] StringLiteralExpr\\[.*?\\] StringLiteralExpr\\[orc\\].*?\\/ExpressionStmt.*?$",
+                source, RegexMatcher.matches("^.*?ExpressionStmt VariableDeclarationExpr ReferenceType ClassOrInterfaceType\\[Character\\] VariableDeclarator VariableDeclaratorId\\[orc\\] ObjectCreationExpr ClassOrInterfaceType\\[Character\\] StringLiteralExpr\\[.*?\\] StringLiteralExpr\\[orc\\].*?\\/ExpressionStmt.*?$"));
     }
 
     @Test
-    public void mainMethodShouldOutputWizardDescriptionsBeforeAttackingTest(){
+    public void mainMethodShouldOutputWizardDescriptionAfterInstantiatingIt(){
         /* arrange */
 
         /* act */
@@ -56,13 +56,13 @@ public class MainTest extends TestifierTest {
         }
 
         /* assert */
-        assertThat("The main() method should print a description of the wizard before any attacks.",
-                source, RegexMatcher.matches("^.*?ExpressionStmt MethodCallExpr NameExpr\\[System\\] FieldAccessExpr\\[out\\] MethodName\\[println\\] MethodArguments NameExpr\\[wizard\\] \\/MethodArguments \\/MethodCallExpr \\/ExpressionStmt.*?(?=MethodName\\[attack\\]).*?$"));
+        assertThat("The main() method should print a description of the wizard after instantiating it.",
+                source, RegexMatcher.matches("^.*?ExpressionStmt VariableDeclarationExpr ReferenceType ClassOrInterfaceType\\[Character\\] VariableDeclarator VariableDeclaratorId\\[wizard\\].*?ExpressionStmt MethodCallExpr NameExpr\\[System\\] FieldAccessExpr\\[out\\] MethodName\\[println\\] MethodArguments NameExpr\\[wizard\\] \\/MethodArguments \\/MethodCallExpr \\/ExpressionStmt.*?$"));
 
     }
 
     @Test
-    public void mainMethodShouldOutputOrcDescriptionsBeforeAttackingTest(){
+    public void mainMethodShouldOutputOrcDescriptionAfterInstantiatingIt(){
         /* arrange */
 
         /* act */
@@ -74,8 +74,8 @@ public class MainTest extends TestifierTest {
         }
 
         /* assert */
-        assertThat("The main() method should print a description of the orc before any attacks.",
-                source, RegexMatcher.matches("^.*?ExpressionStmt MethodCallExpr NameExpr\\[System\\] FieldAccessExpr\\[out\\] MethodName\\[println\\] MethodArguments NameExpr\\[orc\\] \\/MethodArguments \\/MethodCallExpr \\/ExpressionStmt.*?(?=MethodName\\[attack\\]).*?$"));
+        assertThat("The main() method should print a description of the orc after instantiating it.",
+                source, RegexMatcher.matches("^.*?ExpressionStmt VariableDeclarationExpr ReferenceType ClassOrInterfaceType\\[Character\\] VariableDeclarator VariableDeclaratorId\\[orc\\].*?ExpressionStmt MethodCallExpr NameExpr\\[System\\] FieldAccessExpr\\[out\\] MethodName\\[println\\] MethodArguments NameExpr\\[orc\\] \\/MethodArguments \\/MethodCallExpr \\/ExpressionStmt.*?$"));
 
     }
 
@@ -127,7 +127,7 @@ public class MainTest extends TestifierTest {
 
         /* assert */
         assertThat("The main() method should print a description of the wizard before any attacks.",
-                source, RegexMatcher.matches("^.*?(?=MethodName\\[attack\\]).*?ExpressionStmt MethodCallExpr NameExpr\\[System\\] FieldAccessExpr\\[out\\] MethodName\\[println\\] MethodArguments NameExpr\\[wizard\\] \\/MethodArguments \\/MethodCallExpr \\/ExpressionStmt.*?$"));
+                source, RegexMatcher.matches("^.*?ExpressionStmt MethodCallExpr NameExpr\\[wizard\\] MethodName\\[attack\\].*?ExpressionStmt MethodCallExpr NameExpr\\[System\\] FieldAccessExpr\\[out\\] MethodName\\[println\\] MethodArguments NameExpr\\[wizard\\] \\/MethodArguments \\/MethodCallExpr \\/ExpressionStmt.*?$"));
 
     }
 
@@ -145,7 +145,7 @@ public class MainTest extends TestifierTest {
 
         /* assert */
         assertThat("The main() method should print a description of the orc before any attacks.",
-                source, RegexMatcher.matches("^.*?(?=MethodName\\[attack\\]).*?ExpressionStmt MethodCallExpr NameExpr\\[System\\] FieldAccessExpr\\[out\\] MethodName\\[println\\] MethodArguments NameExpr\\[orc\\] \\/MethodArguments \\/MethodCallExpr \\/ExpressionStmt.*?$"));
+                source, RegexMatcher.matches("^.*?ExpressionStmt MethodCallExpr NameExpr\\[orc\\] MethodName\\[attack\\].*?ExpressionStmt MethodCallExpr NameExpr\\[System\\] FieldAccessExpr\\[out\\] MethodName\\[println\\] MethodArguments NameExpr\\[orc\\] \\/MethodArguments \\/MethodCallExpr \\/ExpressionStmt.*?$"));
 
     }
 }

@@ -30,14 +30,13 @@ public class Character {
         this.power = power;
     }
     // todo: Create a method named 'attack'. This method should accept a Character that will be attacked by this character.
-    public void attack(Character player1, Character player2){
-    
+    public void attack(Character character){
 
-        player1 = new Character(this.name,this.type,this.health,this.power);
-        player2 = new Character(player2.name,player2.type,player2.health,player2.power);
-        System.out.println(player1.name +" attacks " +player2.name);
-        player2.health = player2.health - player1.power;
-        System.out.println(player2.name+" health is: " +player2.health);
+
+
+        System.out.println(character.name +" attacks " + name);
+        health = health - character.power;
+        System.out.println(name+" health is: " + health);
 
 
 
@@ -57,7 +56,7 @@ public class Character {
         damage on each attack."
      */
     public String toString(){
-        String status = "The "+ type+ " "+name+" has " +health+" health and deals "+ power+ " damage on each attack";
+        String status = "The "+ type+ " "+name+" has " +health+" health and deals "+ power+ " damage on each attack.";
         return status;
     }
 }

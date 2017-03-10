@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * The Character class represents a character in a video game. Characters have
  * names, character types (such as wizard, orc, thief, spy, etc), health, and
@@ -20,44 +22,50 @@ public class Character {
     String type;
     // todo: create a property to hold the character's health. This should be a double value.
     double health;
+    double dodgePercent;
+
 
     double power;
-    double dodge;
 
-    public Character(String name, String type){
+
+    public Character(String name, String type) {
         this.name = name;
         this.type = type;
-       if(type == "Cyclops"){
-           this.health = 1250;
-           this.power = 75;
-       }
-       if(type == "DodgeBall Champ"){
-           this.health = 100;
-           this.power = 10;
+        if (type == "Cyclops") {
+            this.health = 1250;
+            this.power = 75;
+            this.dodgePercent = 20./100;
         }
-        if(type == "Wizard") {
+        if (type == "DodgeBall Champ") {
+            this.health = 100;
+            this.power = 10;
+            this.dodgePercent = 90./100;
+        }
+        if (type == "Wizard") {
             this.health = 750;
             this.power = 100;
+            this.dodgePercent = 20./100;
         }
-        if(type == "Flame Mage"){
-           this.health = 850;
-           this.power = 90;
+        if (type == "Flame Mage") {
+            this.health = 850;
+            this.power = 90;
+            this.dodgePercent=25.0/100;
+
         }
 
     }
 
 
     // todo: Create a method named 'attack'. This method should accept a Character that will be attacked by this character.
-    public void attack(Character character){
+    public void attack(Character character) {
 
-        System.out.println(character.name +" attacks " + name);
+        System.out.println(character.name + " attacks " + name);
         health = health - character.power;
-        System.out.println(name+" health is: " + health);
-
+        System.out.println(name + " health is: " + health);
 
 
     }
-        // todo: Update the character that was passed into the attack() method by decreasing its health by this character's power.
+    // todo: Update the character that was passed into the attack() method by decreasing its health by this character's power.
         /*
             As an example for this to-do, imagine this character is a wizard
             with a power of 10.25. If it attacks an orc with a health of 70,
@@ -71,8 +79,27 @@ public class Character {
         power of 23 would output "The wizard Lisa has 100.0 health and deals 23
         damage on each attack."
      */
-    public String toString(){
-        String status = "The "+ type+ " "+name+" has " +health+" health and deals "+ power+ " damage on each attack.";
+    public String toString() {
+        String status = "The " + type + " " + name + " has " + health + " health and deals " + power + " damage on each attack.";
         return status;
+
+
+    public Boolean setDodge() {
+
+
+        Random ran = new Random();
+
+        double randomNum = ran.nextDouble();
+        boolean dodge = false;
+
+        if (dodgePercent >= randomNum) {
+            dodge = true;
+        }
+
+
+        return dodge;
     }
+
+
 }
+

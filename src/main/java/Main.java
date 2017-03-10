@@ -1,42 +1,47 @@
 import java.util.Scanner;
 
-/**
- * In this exercise you will complete a Character class and use it in the main()
- * method below.
- * <p>
- * You should start by following the instructions in the Character class.
- */
-
 public class Main {
 
 
-
-    // todo: Create a main() method.
     public static void main(String[] args) {
-        // todo: Create a new instance of the Character class named wizard. The instance's type should be set to 'wizard', but all other properties are up to you.
+
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter the name of your character");
-       String name = scan.nextLine();
+        String name = scan.nextLine();
         System.out.println("Enter the type of your character");
-       String type = scan.nextLine();
+        String type = scan.nextLine();
+
+        String AItype = "Flame Mage";
 
         Character player1 = new Character(name, type);
 
 
-        // todo: Create a new instance of the Character class named orc. The instance's type should be set to 'orc', but all other properties are up to you.
-        Character orc = new Character( "h","orc");
-        // todo: Print the wizard to the console.
+        // Create a new instance of the Character class named AI.
+        Character AI = new Character( "AI", AItype);
+
             System.out.println(player1);
-            // todo: Print the orc to the console
-            System.out.println(orc);
-            // todo: Have the wizard attack the orc
-            player1.attack(orc);
-            // todo: Have the orc attack the wizard
-            orc.attack(player1);
-            // todo: Print the wizard to the console again.
+
+            System.out.println(AI);
+
+
+        while(player1.health > 0 || AI.health > 0) {
+                player1.attack(AI);
+                if(player1.health <= 0){
+                    System.out.println("You Lose");
+                    break;
+                }
+                AI.attack(player1);
+                if(AI.health <= 0){
+                    System.out.println("You win");
+                    break;
+                }
+
+        }
+
+            // Print the player to the console.
             System.out.println(player1);
-            // todo: Print the orc to the console again.
-            System.out.println(orc);
+            // Print the AI to the console.
+            System.out.println(AI);
     }
     }
 

@@ -20,19 +20,35 @@ public class Character {
     String type;
     // todo: create a property to hold the character's health. This should be a double value.
     double health;
-    // todo: Create a property to hold the character's power. This should be a double value.
+
     double power;
-    // todo: Create a constructor that accepts and sets the default values for the name, type, health, and power properties. Note that the order specified is required for tests to pass.
-    public Character(String name, String type, double health, double power){
+    double dodge;
+
+    public Character(String name, String type){
         this.name = name;
         this.type = type;
-        this.health = health;
-        this.power = power;
+       if(type == "Cyclops"){
+           this.health = 1250;
+           this.power = 75;
+       }
+       if(type == "DodgeBall Champ"){
+           this.health = 100;
+           this.power = 10;
+        }
+        if(type == "Wizard") {
+            this.health = 750;
+            this.power = 100;
+        }
+        if(type == "Flame Mage"){
+           this.health = 850;
+           this.power = 90;
+        }
+
     }
+
+
     // todo: Create a method named 'attack'. This method should accept a Character that will be attacked by this character.
     public void attack(Character character){
-
-
 
         System.out.println(character.name +" attacks " + name);
         health = health - character.power;

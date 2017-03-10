@@ -83,7 +83,8 @@ public class Character {
         String status = "The " + type + " " + name + " has " + health + " health and deals " + power + " damage on each attack.";
         return status;
 
-
+    }
+    
     public Boolean setDodge() {
 
 

@@ -20,23 +20,24 @@ public class Main {
         System.out.println("Enter the type of your character");
        String type = scan.nextLine();
 
-        Character player1 = new Character(name, type);
+
+        Character userPlayer = new Character(name, type);
 
 
         // todo: Create a new instance of the Character class named orc. The instance's type should be set to 'orc', but all other properties are up to you.
-        Character orc = new Character( "h","orc");
+        Character AI = new Character( "Zar","Flame Mage");
         // todo: Print the wizard to the console.
-            System.out.println(player1);
+            System.out.println(userPlayer);
             // todo: Print the orc to the console
-            System.out.println(orc);
+            System.out.println(AI);
             // todo: Have the wizard attack the orc
-            player1.attack(orc);
+            userPlayer.attack(AI);
             // todo: Have the orc attack the wizard
-            orc.attack(player1);
+            AI.attack(userPlayer);
             // todo: Print the wizard to the console again.
-            System.out.println(player1);
+            System.out.println(userPlayer);
             // todo: Print the orc to the console again.
-            System.out.println(orc);
+            System.out.println(AI);
     }
     }
 

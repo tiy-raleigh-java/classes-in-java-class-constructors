@@ -1,47 +1,36 @@
-/**
- * The Character class represents a character in a video game. Characters have
- * names, character types (such as wizard, orc, thief, spy, etc), health, and
- * power. Power is the amount of damage a character deals when they attack
- * another Character.
- * <p>
- * Your job is to add these four properties to this class, along with a
- * constructor to setup the Character's initial state. You will also need to add
- * an attack() method so that a Character may attack and deal damage to another
- * character. Finally, you will override the toString() method so that object
- * can describe itself.
- * <p>
- * Follow the instructions in the to-do items listed below.
- */
 public class Character {
 
-    // todo: Create a property to hold the character's name
     String name;
-    // todo: Create a property to hold the character's type. This will be free-form text.
     String type;
-    // todo: create a property to hold the character's health. This should be a double value.
     double health;
 
     double power;
     double dodge;
 
+
     public Character(String name, String type){
         this.name = name;
         this.type = type;
-       if(type == "Cyclops"){
+       if(type.equals("Cyclops")){
            this.health = 1250;
-           this.power = 75;
+           this.power = 70;
+           this.dodge = 20.0/100.0;
        }
-       if(type == "DodgeBall Champ"){
+       if(type.equals("Dodgeball Champ")){
            this.health = 100;
            this.power = 10;
+           this.dodge = 60.0/100.0;
         }
-        if(type == "Wizard") {
+        if(type.equals("Wizard")){
             this.health = 750;
             this.power = 100;
+            this.dodge = 25.0/100.0;
         }
-        if(type == "Flame Mage"){
+        if(type.equals("Flame Mage")){
            this.health = 850;
            this.power = 90;
+           this.dodge = 20.0/100.0;
+
         }
 
     }
@@ -51,7 +40,13 @@ public class Character {
     public void attack(Character character){
 
         System.out.println(character.name +" attacks " + name);
-        health = health - character.power;
+        if (setDodge()){
+            health = health;
+            System.out.println(name + "dodged.");
+        }
+        else {
+            health = health - character.power;
+        }
         System.out.println(name+" health is: " + health);
 
 
@@ -72,7 +67,7 @@ public class Character {
         damage on each attack."
      */
     public String toString(){
-        String status = "The "+ type+ " "+name+" has " +health+" health and deals "+ power+ " damage on each attack.";
+        String status = "The " + type + " " + name + " has " +health+" health and deals "+ power+ " damage on each attack.";
         return status;
     }
 }

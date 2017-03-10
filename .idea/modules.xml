@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/classes-in-java-class-constructors.iml" filepath="$PROJECT_DIR$/classes-in-java-class-constructors.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ThunderDome.iml" filepath="$PROJECT_DIR$/.idea/ThunderDome.iml" />
     </modules>
   </component>
 </project>
